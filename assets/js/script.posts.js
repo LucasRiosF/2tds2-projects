@@ -94,3 +94,7 @@ function removePost(index) {
         document.getElementById("list").classList.add("hidden");
     }
 }
+
+
+
+
