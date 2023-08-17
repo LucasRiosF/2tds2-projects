@@ -52,7 +52,9 @@ function createCategory() {
     //console.log(categoryName)
     categoryList.addCategory(categoryName);
 
-    console.log(categoryList.categories);
+    displayCategoriesAndProducts()
+    clearFormFields()
+    //console.log(categoryList.categories);
 }
 
 function createProduct() {
@@ -65,9 +67,42 @@ function createProduct() {
     console.log(productList.products);
 }
 
-function clearFormaFields(){
+
+function clearFormFields(){
     document.getElementById("categoryName").value = "";
     document.getElementById("productName").value = "";
     document.getElementById("productPrice").value = "";
     document.getElementById("productCategory").value = "";
+}
+
+function displayCategoriesAndProducts() {
+    let content = "";
+
+    categoryList.categories.forEach((category) => {
+        content += `
+        <li>
+          <div class="categoriesList">
+          <span><b>Categoria:</b>${category.name}</span>
+
+          <div>
+          <button class = "editButton">Editar</button>
+          <button class = "removeButton">Remover</button>
+          </div>
+          </div>
+
+          <ul class="productsListByCategory">`;
+          category.products.forEach((product) => {
+            content += `
+        </li>
+        <div>
+        <button class = "editButton">Editar</button>
+        <button class = "deleteButton">Remover</button>
+        </div>
+        </div>`;
+    });
+    content += `
+    </ul>
+    </li>`;
+});
+ document.getElementById("categoriesList").innerHTML = content;
 }
