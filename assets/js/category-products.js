@@ -7,6 +7,7 @@ class Category {
     }
 }
 
+//Prduto pertence a uma categoria
 class Product {
     constructor(id, name, price, category){
         this.id = id;
@@ -27,4 +28,14 @@ class CategoryService {
         const category = new Category(id, name);
         this.categories.push(category);
     }
+}
+
+const categoryList = new CategoryService();
+
+function createCategory() {
+    const categoryName = "Doce";
+
+    categoryList.addCategory(categoryName);
+
+    console.log(categoryList.categories);
 }
